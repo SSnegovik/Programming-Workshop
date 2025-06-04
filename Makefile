@@ -1,7 +1,6 @@
 clean:
 	rm -rf *.o *.a *_test
 
-# Проверка форматирования
 check_fmt:
 	clang-format -style=LLVM --dry-run --Werror `find . -regex ".*\.[ch]"`
 
