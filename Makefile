@@ -1,4 +1,3 @@
-# Очистка
 clean:
 	rm -rf *.o *.a *_test
 
