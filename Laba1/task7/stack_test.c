@@ -22,7 +22,7 @@ void test_push() {
   assert(stack.top == 1);
   assert(stack.array[stack.top] == 40);
 
-  assert(push(&stack, 60) == 0);;
+  assert(push(&stack, 60) == 0);
   assert(stack.top == 2);
   assert(stack.array[stack.top] == 60);
 }
