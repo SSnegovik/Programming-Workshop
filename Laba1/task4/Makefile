@@ -15,4 +15,3 @@ quadratic_test: quadratic_test.o quadratic.a
 
 test: quadratic_test
 	./quadratic_test
-
