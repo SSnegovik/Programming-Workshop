@@ -13,7 +13,7 @@ int is_empty(Stack *stack) { return stack->top == -1; }
 
 int is_full(Stack *stack) { return stack->top == stack->size - 1; }
 
-void push(Stack *stack, int value) {
+int push(Stack *stack, int value) {
   if (is_full(stack)) {
     return -1;
   } else {
