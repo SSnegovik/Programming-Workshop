@@ -13,6 +13,6 @@ int is_empty(Stack *stack);
 
 int is_full(Stack *stack);
 
-void push(Stack *stack, int value);
+int push(Stack *stack, int value);
 
 int pop(Stack *stack, int *out_value);
