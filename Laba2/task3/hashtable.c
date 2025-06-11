@@ -12,7 +12,8 @@ static size_t hash_string(const char *str, size_t capacity) {
   return hash % capacity;
 }
 
-void hashtable_init(HashTable *table, size_t capacity, size_t element_size, void *allocator) {
+void hashtable_init(HashTable *table, size_t capacity,
+                    size_t element_size, void *allocator) {
   table->capacity = capacity;
   table->allocator = allocator;
   table->element_size = element_size;
@@ -45,7 +46,7 @@ void hashtable_insert(HashTable *table, const char *key, const void *value) {
   void *value_copy = malloc(table->element_size);
   if (!value_copy) {
     free(key_copy);
-    pool_free(table->allocator, new_node;)
+    pool_free(table->allocator, new_node);
     return;
   }
   memcpy(value_copy, value, table->element_size);
