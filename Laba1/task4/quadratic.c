@@ -27,7 +27,7 @@ long double *find_roots(long double a, long double b, long double c,
     result[0] = x / a;
     result[1] = c / x;
 
-    if (result[0] > result[1]) {
+    if (fabsl(result[0] > result[1] > eps && result[0] > result[1]) {
       long double temp = result[0];
       result[0] = result[1];
       result[1] = temp;
