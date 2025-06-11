@@ -3,7 +3,7 @@
 Element *create_element(int data) {
   Element *new_element = (Element *)malloc(sizeof(Element));
   if (!new_element) {
-    exit(1);
+    return NULL;
   }
   new_element->data = data;
   new_element->next = NULL;
@@ -58,7 +58,7 @@ void add_at_index(CustomList *list, int data, int index) {
 
 void delete_at_index(CustomList *list, int index) {
   if (index < 0 || index >= list->size) {
-    return;
+    return NULL;
   }
   Element *temp;
   if (index == 0) {
