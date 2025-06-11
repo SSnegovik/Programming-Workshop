@@ -3,20 +3,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define EPSILON 1e-10
-
-long double *find_roots(long double a, long double b, long double c) {
-  if (a == 0) {
+long double *find_roots(long double a, long double b, long double c,
+                        long double eps) {
+  if (fabs(a) < eps) {
     return NULL;
   }
 
   long double d = b * b - 4 * a * c;
 
-  if (d < 0) {
+  if (d < -eps) {
     return NULL;
   }
 
-  if (fabs(d) < EPSILON) {
+  if (fabs(d) < eps) {
     long double *result = (long double *)malloc(sizeof(long double));
     result[0] = -b / (2 * a);
     return result;
