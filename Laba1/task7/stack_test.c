@@ -14,15 +14,15 @@ void test_push() {
   Stack stack;
   init_stack(&stack, 10);
 
-  push(&stack, 20);
+  assert(push(&stack, 20) == 0);
   assert(stack.top == 0);
   assert(stack.array[stack.top] == 20);
 
-  push(&stack, 40);
+  assert(push(&stack, 40) == 0);
   assert(stack.top == 1);
   assert(stack.array[stack.top] == 40);
 
-  push(&stack, 60);
+  assert(push(&stack, 60) == 0);;
   assert(stack.top == 2);
   assert(stack.array[stack.top] == 60);
 }
@@ -37,15 +37,15 @@ void test_pop() {
 
   int value;
 
-  assert(pop(&stack) == 60);
+  assert(pop(&stack) == 0);
   assert(value == 60);
   assert(stack.top == 1);
 
-  assert(pop(&stack) == 40);
+  assert(pop(&stack) == 0);
   assert(value == 40);
   assert(stack.top == 0);
 
-  assert(pop(&stack) == 20);
+  assert(pop(&stack) == 0);
   assert(value == 20);
   assert(stack.top == -1);
 }
