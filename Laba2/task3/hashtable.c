@@ -12,19 +12,20 @@ static size_t hash_string(const char *str, size_t capacity) {
   return hash % capacity;
 }
 
-void hashtable_init(HashTable *table, size_t capacity, void *allocator) {
+void hashtable_init(HashTable *table, size_t capacity, size_t element_size, void *allocator) {
   table->capacity = capacity;
   table->allocator = allocator;
+  table->element_size = element_size;
   table->buckets = (HashNode **)calloc(capacity, sizeof(HashNode *));
 }
 
-void hashtable_insert(HashTable *table, const char *key, void *value) {
+void hashtable_insert(HashTable *table, const char *key, const void *value) {
   size_t index = hash_string(key, table->capacity);
   HashNode *node = table->buckets[index];
 
   while (node) {
     if (strcmp(node->key, key) == 0) {
-      node->value = value;
+      memcpy(node->value, value, table->element_size);
       return;
     }
     node = node->next;
@@ -36,10 +37,19 @@ void hashtable_insert(HashTable *table, const char *key, void *value) {
 
   size_t key_len = strlen(key) + 1;
   char *key_copy = (char *)malloc(key_len);
-  if (!key_copy)
+  if (!key_copy) {
     return;
+  }
   memcpy(key_copy, key, key_len);
 
+  void *value_copy = malloc(table->element_size);
+  if (!value_copy) {
+    free(key_copy);
+    pool_free(table->allocator, new_node;)
+    return;
+  }
+  memcpy(value_copy, value, table->element_size);
+  
   new_node->key = key_copy;
   new_node->value = value;
   new_node->next = table->buckets[index];
