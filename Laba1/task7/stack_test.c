@@ -35,13 +35,18 @@ void test_pop() {
   push(&stack, 40);
   push(&stack, 60);
 
+  int value;
+
   assert(pop(&stack) == 60);
+  assert(value == 60);
   assert(stack.top == 1);
 
   assert(pop(&stack) == 40);
+  assert(value == 40);
   assert(stack.top == 0);
 
   assert(pop(&stack) == 20);
+  assert(value == 20);
   assert(stack.top == -1);
 }
 
@@ -51,7 +56,9 @@ void test_push_after_pop() {
 
   push(&stack, 20);
   push(&stack, 40);
-  pop(&stack);
+
+  int temp;
+  pop(&stack, &temp);
 
   push(&stack, 80);
   assert(stack.top == 1);
