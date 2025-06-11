@@ -38,7 +38,7 @@ void add_to_end(CustomList *list, int data) {
 
 void add_at_index(CustomList *list, int data, int index) {
   if (index < 0 || index > list->size) {
-    return;
+    return NULL;
   }
   if (index == 0) {
     add_to_beginning(list, data);
