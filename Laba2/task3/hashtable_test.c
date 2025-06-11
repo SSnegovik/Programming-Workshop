@@ -7,7 +7,7 @@ int main() {
 
   PoolAllocator *allocator = pool_allocator_create(sizeof(HashNode), capacity);
   HashTable table;
-  hashtable_init(&table, capacity, allocator);
+  hashtable_init(&table, capacity, allocator, sizeof(int));
 
   int value1 = 42;
   hashtable_insert(&table, "key1", &value1);
